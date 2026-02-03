@@ -16,8 +16,9 @@ une dockerisation complète pour faciliter le déploiement.
 
 L’utilisateur charge une image → l’API prédit l’espèce → le frontend affiche la fiche détaillée → l’observation est enregistrée dans la base.
 
-🗂️ Architecture du projet
+🗂️ Architecture du proje
 
+```text
 wildaiprintApp/
 │
 ├── api/
@@ -36,6 +37,7 @@ wildaiprintApp/
 │ └── Dockerfile
 │
 └── docker-compose.yml # Orchestration multi‑conteneurs
+```
 
 🚀 Fonctionnement de l’application
 🔍 1. Prédiction d’une empreinte
