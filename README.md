@@ -1,6 +1,7 @@
 WildAIPrint — README
 
 📌 Présentation du projet
+
 WildAIPrint est une application permettant d’identifier une empreinte animale à partir d’une image.
 Elle combine :
 
@@ -81,11 +82,13 @@ Après la prédiction, le frontend envoie :
 ```
 
 à l’endpoint :
+
 POST /tracks
 
 L’API enregistre l’observation dans la table tracks.
 
 🐳 Dockerisation
+
 L’application utilise deux conteneurs :
 
 flask_api → API Flask + modèle + SQLite
@@ -101,6 +104,7 @@ docker-compose up --build
 ```
 
 Puis ouvrir :
+
 http://localhost
 
 🐳 Publication de l’image sur DockerHub
@@ -154,6 +158,7 @@ docker pull yasminesayad/wildaiprintapp-front:latestt
 ```
 
 🧪 Endpoints de l’API
+
 🔹 GET /
 Retourne un message simple pour vérifier que l’API fonctionne.
 
