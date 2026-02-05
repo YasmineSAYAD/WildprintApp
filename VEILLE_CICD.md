@@ -1,40 +1,43 @@
-🧩 Veille : CI/CD — Concepts, enjeux, outils
+# 🧩 Veille : CI/CD — Concepts, enjeux, outils
 
-🚀 Qu'est-ce que la CI (Continuous Integration) ?
+# 🚀 Qu'est-ce que la CI (Continuous Integration) ?
+
 La CI (Intégration Continue) est une pratique DevOps qui consiste à intégrer automatiquement et fréquemment les modifications de code dans une branche commune.
 Chaque intégration déclenche :
 
-une compilation automatique
+- une compilation automatique
 
-des tests automatisés (unitaires, intégration…)
+- des tests automatisés (unitaires, intégration…)
 
-une vérification de la qualité du code
+- une vérification de la qualité du code
 
-Objectif : détecter les conflits et erreurs le plus tôt possible.
+**Objectif** : détecter les conflits et erreurs le plus tôt possible.
 
-🛠️ Quels problèmes la CI résout-elle ?
-Conflits de fusion entre développeurs travaillant en parallèle
+# 🛠️ Quels problèmes la CI résout-elle ?
 
-“Merge day” douloureux (gros lots de code difficiles à intégrer)
+- Conflits de fusion entre développeurs travaillant en parallèle
 
-Bugs détectés trop tard
+- “Merge day” douloureux (gros lots de code difficiles à intégrer)
 
-Environnements différents entre développeurs
+- Bugs détectés trop tard
 
-Manque de visibilité sur la qualité du code
+- Environnements différents entre développeurs
 
-🔑 Principes clés de la CI
-Intégrations fréquentes (plusieurs fois par jour)
+- Manque de visibilité sur la qualité du code
 
-Automatisation complète : build + tests
+# 🔑 Principes clés de la CI
 
-Pipeline reproductible
+- Intégrations fréquentes (plusieurs fois par jour)
 
-Feedback rapide pour les développeurs
+- Automatisation complète : build + tests
 
-Un tronc commun stable
+- Pipeline reproductible
 
-🧰 Exemples d’outils de CI
+- Feedback rapide pour les développeurs
+
+- Un tronc commun stable
+
+# 🧰 Exemples d’outils de CI
 
 | Outil     | Description                             |
 | --------- | --------------------------------------- |
@@ -42,23 +45,23 @@ Un tronc commun stable
 | GitLab CI | CI/CD intégré à GitLab                  |
 | CircleCI  | Plateforme CI/CD cloud très utilisée    |
 
-📦 Qu'est-ce que le CD (Continuous Delivery / Continuous Deployment) ?
+# 📦 Qu'est-ce que le CD (Continuous Delivery / Continuous Deployment) ?
 
 Le CD correspond à l’automatisation des étapes après la CI : tests avancés, packaging, déploiement.
 
 Il existe deux variantes :
 
-Continuous Delivery (Distribution Continue)
-Le code est automatiquement testé et préparé pour la production.
+- Continuous Delivery (Distribution Continue)
+  Le code est automatiquement testé et préparé pour la production.
 
-Le déploiement final nécessite une validation humaine.
+- Le déploiement final nécessite une validation humaine.
 
-Continuous Deployment (Déploiement Continu)
-Le code est déployé automatiquement en production, sans intervention humaine.
+- Continuous Deployment (Déploiement Continu)
+  Le code est déployé automatiquement en production, sans intervention humaine.
 
-Chaque commit validé part en production.
+- Chaque commit validé part en production.
 
-⚖️ Différence entre Continuous Delivery et Continuous Deployment
+# ⚖️ Différence entre Continuous Delivery et Continuous Deployment
 
 | Critère                   | Continuous Delivery | Continuous Deployment            |
 | ------------------------- | ------------------- | -------------------------------- |
@@ -67,55 +70,60 @@ Chaque commit validé part en production.
 | Risque                    | Plus faible         | Plus élevé si tests insuffisants |
 | Vitesse                   | Rapide              | Très rapide                      |
 
-📉 Risques & 📈 Bénéfices du CD
-Bénéfices
-Déploiements plus rapides
+# 📉 Risques & 📈 Bénéfices du CD
 
-Moins d’erreurs humaines
+**Bénéfices**
 
-Feedback utilisateur accéléré
+- Déploiements plus rapides
 
-Pipeline reproductible et fiable
+- Moins d’erreurs humaines
 
-Amélioration continue du produit
+- Feedback utilisateur accéléré
 
-Risques
-Dépendance forte aux tests automatisés
+- Pipeline reproductible et fiable
 
-Risque de déployer un bug en production (surtout en Continuous Deployment)
+- Amélioration continue du produit
 
-Investissement initial important (tests, pipelines, monitoring)
+**Risques**
 
-🔗 Pourquoi CI/CD est important ?
-🧪 Impact sur la qualité du code
-Détection précoce des bugs
+- Dépendance forte aux tests automatisés
 
-Tests automatisés systématiques
+- Risque de déployer un bug en production (surtout en Continuous Deployment)
 
-Code base toujours stable
+- Investissement initial important (tests, pipelines, monitoring)
 
-Réduction des régressions
+# 🔗 Pourquoi CI/CD est important ?
 
-⚡ Impact sur la vitesse de développement
-Automatisation des tâches répétitives
+**🧪 Impact sur la qualité du code**
 
-Déploiements plus rapides
+- Détection précoce des bugs
 
-Feedback immédiat
+- Tests automatisés systématiques
 
-Moins de temps perdu sur les merges complexes
+- Code base toujours stable
 
-🤝 Impact sur la collaboration en équipe
+- Réduction des régressions
 
-Un tronc commun partagé et stable
+**⚡ Impact sur la vitesse de développement**
 
-Moins de conflits entre développeurs
+- Automatisation des tâches répétitives
 
-Transparence sur l’état du code
+- Déploiements plus rapides
 
-Alignement Dev + Ops (culture DevOps)
+- Feedback immédiat
 
-🧭 Conclusion
-La CI/CD est aujourd’hui indispensable pour les équipes modernes :
-elle améliore la qualité, accélère le développement et renforce la collaboration.
-Elle permet de livrer plus vite, plus souvent, et avec plus de confiance.
+- Moins de temps perdu sur les merges complexes
+
+**🤝 Impact sur la collaboration en équipe**
+
+- Un tronc commun partagé et stable
+
+- Moins de conflits entre développeurs
+
+- Transparence sur l’état du code
+
+- Alignement Dev + Ops (culture DevOps)
+
+# 🧭 Conclusion\*\*
+
+La CI/CD est aujourd’hui indispensable pour les équipes modernes : elle améliore la qualité, accélère le développement et renforce la collaboration. Elle permet de livrer plus vite, plus souvent, et avec plus de confiance.
