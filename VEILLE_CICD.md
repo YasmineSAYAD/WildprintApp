@@ -124,6 +124,6 @@ Il existe deux variantes :
 
 - Alignement Dev + Ops (culture DevOps)
 
-# 🧭 Conclusion\*\*
+# 🧭 Conclusion
 
 La CI/CD est aujourd’hui indispensable pour les équipes modernes : elle améliore la qualité, accélère le développement et renforce la collaboration. Elle permet de livrer plus vite, plus souvent, et avec plus de confiance.
