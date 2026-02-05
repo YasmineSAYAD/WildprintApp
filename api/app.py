@@ -1,11 +1,12 @@
-from flask import Flask, jsonify, request
-from tensorflow.keras.models import load_model
-import numpy as np
+
 import sqlite3
 import json
+import numpy as np
+from flask import Flask, jsonify, request
+from tensorflow.keras.models import load_model
 from flask_cors import CORS
 from PIL import Image
-import os
+
 
 app = Flask(__name__)
 app.secret_key = "iqusgdoiqzgdpaohbpng$p^zoepobng,^pozpebngnôpzen,gn^bopzne,p"
