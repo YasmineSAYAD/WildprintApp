@@ -338,3 +338,160 @@ uv est un outil moderne qui :
 - simplifie les workflows CI/CD (GitHub Actions)
 
 C’est aujourd’hui l’un des outils les plus prometteurs pour la gestion de projets Python.
+
+# 🧩 Comprendre Semantic Release
+
+## 🎯 Qu’est‑ce que le versionnage sémantique (SemVer) ?
+
+Le versionnage sémantique est une convention standardisée pour numéroter les versions d’un logiciel selon le format : MAJOR.MINOR.PATCH
+
+**🔹 MAJOR**
+
+Incrémenté lorsque :
+
+- des changements incompatibles sont introduits,
+
+- l’API publique casse la rétro‑compatibilité.
+
+**🔹 MINOR**
+
+Incrémenté lorsque :
+
+- de nouvelles fonctionnalités compatibles sont ajoutées,
+
+- l’API publique s’enrichit sans casser l’existant.
+
+**🔹 PATCH**
+
+Incrémenté lorsque :
+
+- des corrections de bugs sont apportées,
+
+- aucune nouvelle fonctionnalité n’est ajoutée,
+
+- aucune rupture n’est introduite.
+
+**📌 Résumé rapide**
+
+| Niveau    | Quand bumper ?           |
+| --------- | ------------------------ |
+| **MAJOR** | Rupture de compatibilité |
+| **MINOR** | Nouvelle fonctionnalité  |
+| **PATCH** | Correction de bug        |
+
+## 📝 Qu’est‑ce que les Conventional Commits ?
+
+Les Conventional Commits définissent un format standardisé pour les messages Git afin d’automatiser le versionnage et la génération de changelog.
+
+**🔹 Format général**
+
+```code
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+**🔹 Types de commits les plus courants**
+
+| Type         | Signification                           | Impact SemVer |
+| ------------ | --------------------------------------- | ------------- |
+| **feat**     | Nouvelle fonctionnalité                 | MINOR         |
+| **fix**      | Correction de bug                       | PATCH         |
+| **docs**     | Documentation                           | Aucun         |
+| **style**    | Formatage, lint                         | Aucun         |
+| **refactor** | Refactoring sans changement fonctionnel | Aucun         |
+| **perf**     | Amélioration de performance             | PATCH         |
+| **test**     | Ajout/modification de tests             | Aucun         |
+| **chore**    | Maintenance, CI/CD                      | Aucun         |
+
+**🔥 Cas particulier : BREAKING CHANGE**
+
+Deux façons de déclarer une rupture :
+
+1. Dans le footer :
+
+```code
+BREAKING CHANGE: la fonction X a été supprimée
+```
+
+2. Dans le type :
+
+```code
+feat!: suppression de l’ancienne API
+```
+
+## 🤖 Comment fonctionne python‑semantic‑release ?
+
+python‑semantic‑release automatise :
+
+- le bump de version selon les commits,
+
+- la génération du changelog,
+
+- la création des tags Git,
+
+- la publication des releases GitHub,
+
+- la publication sur PyPI (optionnel).
+
+**🔧 Configuration dans pyproject.toml**
+
+Exemple minimal :
+
+```toml
+[tool.semantic_release]
+version_variable = "package/__init__.py:__version__"
+branch = "main"
+upload_to_pypi = false
+upload_to_release = true
+changelog_file = "CHANGELOG.md"
+```
+
+**🔹 Détection automatique du bump**
+
+| Commit                       | Bump  |
+| ---------------------------- | ----- |
+| **fix:**                     | PATCH |
+| **feat:**                    | MINOR |
+| **BREAKING CHANGE** ou **!** | MAJOR |
+
+**📄 Génération du CHANGELOG**
+
+python‑semantic‑release lit l’historique Git et génère automatiquement un changelog structuré :
+
+- regroupé par version,
+
+-classé par type (feat, fix…),
+
+- avec liens vers les commits.
+
+Exemple :
+
+```code
+## v1.4.0
+### Feat
+- ajout du module d’export (#42)
+
+### Fix
+- correction du bug d’auth (#39)
+```
+
+**🚀 Création des releases GitHub**
+
+Si activé :
+
+- un tag Git est créé (v1.4.0),
+
+- une release GitHub est générée,
+
+- le changelog est automatiquement injecté dans la release.
+
+## 📌 Synthèse finale
+
+| Concept                     | Rôle                                    | Lien avec les autres                                             |
+| --------------------------- | --------------------------------------- | ---------------------------------------------------------------- |
+| **SemVer**                  | Définit comment numéroter les versions  | python‑semantic‑release applique SemVer automatiquement          |
+| **Conventional Commits**    | Définit comment écrire les messages Git | python‑semantic‑release lit ces messages pour déterminer le bump |
+| **python‑semantic‑release** | Automatise version, changelog, release  | S’appuie sur Conventional Commits + SemVer                       |
