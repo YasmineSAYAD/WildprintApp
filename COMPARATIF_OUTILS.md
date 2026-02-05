@@ -22,7 +22,7 @@
 
 ## Choix d'outils
 
-**🎨 Linters Python**
+### 🎨 Linters Python
 
 Ruff :
 
@@ -40,7 +40,7 @@ Ruff :
 
 👉 **Pourquoi pas Pylint ?** Trop lent, trop verbeux, faux positifs.
 
-**🎨 Formatters Python**
+### 🎨 Formatters Python
 
 Ruff format :
 
@@ -56,7 +56,7 @@ Ruff format :
 
 👉 **Pourquoi pas autopep8 ?** Résultats moins cohérents, moins adopté.
 
-**🔒 Type Checkers**
+### 🔒 Type Checkers
 
 Pyright :
 
@@ -74,7 +74,7 @@ Pyright :
 
 👉 **Pourquoi pas Pyre ?** Peu adopté, installation lourde.
 
-**🧪 Frameworks de Tests**
+### 🧪 Frameworks de Tests
 
 pytest :
 
@@ -90,7 +90,7 @@ pytest :
 
 👉 **Pourquoi pas unittest ?** Trop verbeux, moins ergonomique.
 
-**🔐 Security Scanners**
+### 🔐 Security Scanners
 
 Pour rester 100% gratuit, le meilleur combo est :
 
