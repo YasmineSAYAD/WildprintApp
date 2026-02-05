@@ -496,4 +496,121 @@ Si activé :
 | **Conventional Commits**    | Définit comment écrire les messages Git | python‑semantic‑release lit ces messages pour déterminer le bump |
 | **python‑semantic‑release** | Automatise version, changelog, release  | S’appuie sur Conventional Commits + SemVer                       |
 
-# MkDocs & GitHub Pages
+# 🧩 MkDocs & GitHub Pages
+
+## 📘 Comment MkDocs génère de la documentation ?
+
+MkDocs est un générateur de documentation statique conçu pour les projets Python, mais utilisable pour tout type de documentation.
+
+**🔹 Fonctionnement général**
+
+- Tu écris ta documentation en Markdown (.md).
+
+- Tu configures ton site dans un fichier mkdocs.yml :
+  - thème,
+
+  - navigation,
+
+  - extensions,
+
+  - plugins.
+
+MkDocs convertit ensuite tous les fichiers Markdown en pages HTML statiques.
+
+**🔹 Commandes principales**
+
+- mkdocs serve → lance un serveur local avec rechargement automatique.
+
+- mkdocs build → génère le site statique dans le dossier site/.
+
+**🔹 Thèmes**
+
+Le plus populaire est MkDocs Material, très moderne, responsive, avec :
+
+- recherche intégrée,
+
+- palettes de couleurs,
+
+- navigation avancée,
+
+- blocs d’alertes, onglets, snippets, etc.
+
+## 🚀 Comment déployer MkDocs sur GitHub Pages ?
+
+GitHub Pages permet d’héberger gratuitement un site statique directement depuis un dépôt GitHub.
+La documentation GitHub Pages le confirme : tu peux publier depuis une branche ou via GitHub Actions .
+
+**🔹 Méthode recommandée : GitHub Actions**
+
+1. Ajouter un workflow .github/workflows/gh-pages.yml :
+
+```yaml
+name: Deploy MkDocs
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+      - run: pip install mkdocs-material
+      - run: mkdocs build
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+```
+
+2. GitHub Pages publiera automatiquement le contenu du dossier site/.
+
+**🔹 Alternative : publier depuis la branche gh-pages**
+
+- mkdocs gh-deploy crée automatiquement une branche gh-pages et y pousse le site.
+
+- GitHub Pages peut être configuré pour publier depuis cette branche.
+
+## Qu’est‑ce que mkdocstrings ?
+
+mkdocstrings est un plugin MkDocs qui génère automatiquement de la documentation API à partir du code source.
+
+**🔹 Fonctionnement**
+
+- Il lit les docstrings de ton code Python.
+
+- Il génère des pages Markdown dynamiques.
+
+- Il s’intègre parfaitement avec MkDocs Material.
+
+**🔹 Exemple d’utilisation dans mkdocs.yml**
+
+```yaml
+plugins:
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            docstring_style: google
+```
+
+**🔹 Avantages**
+
+- Documentation API toujours à jour.
+
+- Support multi‑langages (Python, JS, Rust…).
+
+- Intégration parfaite avec Material (tabs, signatures, navigation).
+
+## Synthèse finale
+
+| Sujet                        | Résumé                                                                          |
+| ---------------------------- | ------------------------------------------------------------------------------- |
+| **MkDocs**                   | Génère un site statique à partir de fichiers Markdown.                          |
+| **Déploiement GitHub Pages** | Via GitHub Actions ou `mkdocs gh-deploy`. GitHub Pages publie le site statique. |
+| **mkdocstrings**             | Plugin qui génère automatiquement la documentation API à partir des docstrings. |
