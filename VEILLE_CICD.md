@@ -495,3 +495,5 @@ Si activé :
 | **SemVer**                  | Définit comment numéroter les versions  | python‑semantic‑release applique SemVer automatiquement          |
 | **Conventional Commits**    | Définit comment écrire les messages Git | python‑semantic‑release lit ces messages pour déterminer le bump |
 | **python‑semantic‑release** | Automatise version, changelog, release  | S’appuie sur Conventional Commits + SemVer                       |
+
+# MkDocs & GitHub Pages
