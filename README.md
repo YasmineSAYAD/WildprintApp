@@ -1,23 +1,23 @@
-WildAIPrint — README
+# WildAIPrint — README
 
-📌 Présentation du projet
+# 📌 Présentation du projet
 
 WildAIPrint est une application permettant d’identifier une empreinte animale à partir d’une image.
 Elle combine :
 
-un modèle TensorFlow pour la classification d’empreintes,
+- un modèle TensorFlow pour la classification d’empreintes,
 
-une API Flask pour la prédiction et la gestion des données,
+- une API Flask pour la prédiction et la gestion des données,
 
-une base SQLite contenant les informations sur les espèces,
+- une base SQLite contenant les informations sur les espèces,
 
-un frontend web simple et intuitif,
+- un frontend web simple et intuitif,
 
-une dockerisation complète pour faciliter le déploiement.
+- une dockerisation complète pour faciliter le déploiement.
 
 L’utilisateur charge une image → l’API prédit l’espèce → le frontend affiche la fiche détaillée → l’observation est enregistrée dans la base.
 
-🗂️ Architecture du proje
+# 🗂️ Architecture du proje
 
 ```text
 wildaiprintApp/
@@ -40,54 +40,56 @@ wildaiprintApp/
 └── docker-compose.yml # Orchestration multi‑conteneurs
 ```
 
-🚀 Fonctionnement de l’application
-🔍 1. Prédiction d’une empreinte
-L’utilisateur charge une image depuis le frontend.
+# 🚀 Fonctionnement de l’application
 
-Le frontend envoie l’image à l’API via /predict.
+**🔍 1. Prédiction d’une empreinte**
 
-L’API :
+- L’utilisateur charge une image depuis le frontend.
 
-charge le modèle TensorFlow,
+- Le frontend envoie l’image à l’API via /predict.
 
-prédit l’espèce,
+- L’API :
+  - charge le modèle TensorFlow,
 
-récupère les informations correspondantes dans SQLite,
+  - prédit l’espèce,
 
-renvoie un objet JSON :
+  - récupère les informations correspondantes dans SQLite,
 
-```json
-{
-  "animal": {
-    "species": "Coyote",
-    "name": "Canis latrans",
-    "description": "...",
-    "region": "...",
-    "picture": "coyote.jpg"
+- renvoie un objet JSON :
+
+  ```json
+  {
+    "animal": {
+      "species": "Coyote",
+      "name": "Canis latrans",
+      "description": "...",
+      "region": "...",
+      "picture": "coyote.jpg"
+    }
   }
-}
-```
+  ```
 
-Le frontend affiche la fiche de l’animal.
+- Le frontend affiche la fiche de l’animal.
 
-📝 2. Enregistrement d’une observation
-Après la prédiction, le frontend envoie :
+**📝 2. Enregistrement d’une observation**
 
-```json
-{
-  "loc": "GPS ou texte",
-  "date": "2026-02-03T14:00:00Z",
-  "species": "Coyote"
-}
-```
+- Après la prédiction, le frontend envoie :
 
-à l’endpoint :
+  ```json
+  {
+    "loc": "GPS ou texte",
+    "date": "2026-02-03T14:00:00Z",
+    "species": "Coyote"
+  }
+  ```
 
-POST /tracks
+  à l’endpoint :
 
-L’API enregistre l’observation dans la table tracks.
+  POST /tracks
 
-🐳 Dockerisation
+- L’API enregistre l’observation dans la table tracks.
+
+# 🐳 Dockerisation
 
 L’application utilise deux conteneurs :
 
@@ -97,7 +99,7 @@ wildaiprint_front → frontend web
 
 Le tout est orchestré via docker-compose.
 
-▶️ Lancer l’application
+# ▶️ Lancer l’application
 
 ```bash
 docker-compose up --build
@@ -107,15 +109,15 @@ Puis ouvrir :
 
 http://localhost
 
-🐳 Publication de l’image sur DockerHub
+# 🐳 Publication de l’image sur DockerHub
 
-1. Connexion
+**1. Connexion**
 
 ```bash
 docker login
 ```
 
-2. Tag de l’image
+**2. Tag de l’image**
 
 image front
 
@@ -129,7 +131,7 @@ image API
 docker tag wildaiprintapp-front yasminesayad/wildaiprintapp-front:latest
 ```
 
-3. Push
+**3. Push**
 
 image front
 
@@ -143,7 +145,7 @@ image API
 docker push yasminesayad/wildaiprintapp-front:latestt
 ```
 
-4. Pull depuis n’importe quelle machine
+**4. Pull depuis n’importe quelle machine**
 
 image front
 
@@ -157,7 +159,7 @@ image API
 docker pull yasminesayad/wildaiprintapp-front:latestt
 ```
 
-🧪 Endpoints de l’API
+# 🧪 Endpoints de l’API
 
 🔹 GET /
 Retourne un message simple pour vérifier que l’API fonctionne.
@@ -168,18 +170,20 @@ Envoie une image → renvoie l’espèce prédite + infos.
 🔹 POST /tracks
 Enregistre une observation dans SQLite.
 
-🛠️ Technologies utilisées
-Python 3.11
+# 🛠️ Technologies utilisées
 
-Flask
+- Python 3.11
 
-TensorFlow
+- Flask
 
-SQLite
+- TensorFlow
 
-Docker & Docker Compose
+- SQLite
 
-HTML / CSS / JavaScript
+- Docker & Docker Compose
 
-👩‍💻 Auteur
+- HTML / CSS / JavaScript
+
+# 👩‍💻 Auteur
+
 Projet réalisé par Yasmine SAYAD dans le cadre du brief Dockerisation d’Application : Du Développement au Déploiement.
